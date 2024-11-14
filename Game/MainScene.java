@@ -10,42 +10,53 @@ import javax.swing.*;
 
 public class MainScene extends JFrame implements ActionListener {
 	Container pane = getContentPane();
-	JButton easyButton, normalButton, hardButton;
+	JButton startButton, profileButton, signinButton, signupButton;
 
 	public MainScene() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("Nonograms");
 		pane.setLayout(null);
-		setPreferredSize(new Dimension(800, 600));
-		pane.setBackground(Color.GREEN);
+		setPreferredSize(new Dimension(900, 700));
+		pane.setBackground(new Color(202, 238, 251));
 
 		JLabel theme = new JLabel("NONOGRAMS");
-		theme.setSize(200, 150);
+		theme.setSize(200, 50);
 		theme.setFont(new Font("고딕", Font.PLAIN, 30));
-		theme.setLocation(300, 100);
+		theme.setLocation(350, 150);
 		theme.setVisible(true);
 		pane.add(theme);
 
-		easyButton = new JButton("Easy");
-		easyButton.setSize(100, 50);
-		easyButton.setLocation(150, 400);
-		easyButton.addActionListener(this);
-		easyButton.setVisible(true);
-		pane.add(easyButton);
+		signinButton = new JButton("Sign In");
+		signinButton.setSize(100, 50);
+		signinButton.setLocation(150, 500);
+		signinButton.setBackground(new Color(255, 255, 255));
+		signinButton.addActionListener(this);
+		signinButton.setVisible(true);
+		pane.add(signinButton);
 
-		normalButton = new JButton("Normal");
-		normalButton.setSize(100, 50);
-		normalButton.setLocation(350, 400);
-		normalButton.addActionListener(this);
-		normalButton.setVisible(true);
-		pane.add(normalButton);
+		signupButton = new JButton("Sign Up");
+		signupButton.setSize(100, 50);
+		signupButton.setLocation(400, 500);
+		signupButton.setBackground(new Color(255, 255, 255));
+		signupButton.addActionListener(this);
+		signupButton.setVisible(true);
+		pane.add(signupButton);
 
-		hardButton = new JButton("Hard");
-		hardButton.setSize(100, 50);
-		hardButton.setLocation(550, 400);
-		hardButton.addActionListener(this);
-		hardButton.setVisible(true);
-		pane.add(hardButton);
+		profileButton = new JButton("Profile");
+		profileButton.setSize(100, 50);
+		profileButton.setLocation(650, 500);
+		profileButton.setBackground(new Color(255, 255, 255));
+		profileButton.addActionListener(this);
+		profileButton.setVisible(true);
+		pane.add(profileButton);
+
+		startButton = new JButton("Start");
+		startButton.setSize(100, 50);
+		startButton.setLocation(400, 300);
+		startButton.setBackground(new Color(255, 255, 255));
+		startButton.addActionListener(this);
+		startButton.setVisible(true);
+		pane.add(startButton);
 
 		setResizable(false);
 		pack();
@@ -59,19 +70,24 @@ public class MainScene extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == easyButton) {
-			EasyScene easyscene = new EasyScene();
-			easyscene.setVisible(true);
+		if (e.getSource() == signinButton) {
+			SigninScene signinscene = new SigninScene();
+			signinscene.setVisible(true);
 			dispose();
 		}
-		if (e.getSource() == normalButton) {
-			NormalScene normalscene = new NormalScene();
-			normalscene.setVisible(true);
+		if (e.getSource() == signupButton) {
+			SignupScene signupscene = new SignupScene();
+			signupscene.setVisible(true);
 			dispose();
 		}
-		if (e.getSource() == hardButton) {
-			HardScene hardscene = new HardScene();
-			hardscene.setVisible(true);
+		if (e.getSource() == profileButton) {
+			ProfileScene profilescene = new ProfileScene();
+			profilescene.setVisible(true);
+			dispose();
+		}
+		if (e.getSource() == startButton) {
+			LevelScene levelscene = new LevelScene();
+			levelscene.setVisible(true);
 			dispose();
 		}
 	}
