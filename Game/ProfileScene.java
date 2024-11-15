@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,6 +22,7 @@ public class ProfileScene extends JFrame implements ActionListener {
 	JButton submitButton, undoButton;
 	JLabel search, resultLabel;
 	JTextField nicknameField;
+	Random random = new Random();
 	
 	public ProfileScene() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -40,25 +42,26 @@ public class ProfileScene extends JFrame implements ActionListener {
 		search = new JLabel("Search : ");
 		search.setSize(150, 50);
 		search.setFont(new Font("고딕", Font.PLAIN, 30));
-		search.setLocation(0, 200);
+		search.setLocation(0, 100);
 		search.setVisible(true);
 		pane.add(search);
 		
 		nicknameField = new JTextField(15);
 		nicknameField.setSize(150, 50);
-		nicknameField.setLocation(150, 200);
+		nicknameField.setFont(new Font("고딕", Font.PLAIN, 20));
+		nicknameField.setLocation(150, 100);
 		nicknameField.setVisible(true);
 		pane.add(nicknameField);
 		
 		resultLabel = new JLabel(); 
-		resultLabel.setSize(400, 50); 
-		resultLabel.setFont(new Font("고딕", Font.PLAIN, 20)); 
-		resultLabel.setLocation(0, 300); 
+		resultLabel.setSize(600, 50); 
+		resultLabel.setFont(new Font("고딕", Font.PLAIN, 20));
+		resultLabel.setLocation(0, 200); 
 		pane.add(resultLabel);
 		
 		submitButton = new JButton("Submit");
 		submitButton.setSize(100, 50);
-		submitButton.setLocation(350, 200);
+		submitButton.setLocation(350, 100);
 		submitButton.addActionListener(this);
 		submitButton.setVisible(true);
 		submitButton.addActionListener(new ActionListener() { 
@@ -66,8 +69,9 @@ public class ProfileScene extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) { 
 				String nickname = nicknameField.getText(); 
 				String password = searchPasswordByNickname(nickname); 
-				if (password != null) { 
-					resultLabel.setText("닉네임: " + nickname + ", 비밀번호: " + password); 
+				int n=random.nextInt(12)+1;
+				if (password != null && nickname != null) { 
+					resultLabel.setText("닉네임: " + nickname + "\n 비밀번호: " + password + "\n 도달한 레벨 : " + n + "레벨"); 
 				} 
 				else { 
 					JOptionPane.showMessageDialog(pane, "해당 닉네임을 찾을 수 없습니다.");
@@ -106,15 +110,6 @@ public class ProfileScene extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == submitButton) {
-			JLabel admin = new JLabel("Nickname : admin");
-			admin.setSize(120, 50);
-			admin.setFont(new Font("고딕", Font.PLAIN, 30));
-			admin.setLocation(0, 200);
-			admin.setVisible(true);
-			pane.add(admin);
-		}
-		
 		if (e.getSource() == undoButton) {
 			MainScene mainscene = new MainScene();
 			mainscene.setVisible(true);

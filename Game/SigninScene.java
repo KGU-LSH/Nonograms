@@ -48,6 +48,7 @@ public class SigninScene extends JFrame implements ActionListener {
 		
 		JTextField nicknameField = new JTextField(15);
 		nicknameField.setSize(150, 50);
+		nicknameField.setFont(new Font("고딕", Font.PLAIN, 20)); 
 		nicknameField.setLocation(150, 200);
 		nicknameField.setVisible(true);
 		pane.add(nicknameField);
